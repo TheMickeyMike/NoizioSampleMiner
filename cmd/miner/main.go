@@ -8,7 +8,7 @@ import (
 )
 
 type App struct {
-	config      *core.AppConfig
+	config      *AppConfig
 	store       *core.Store
 	fileManager *core.FileManager
 }
