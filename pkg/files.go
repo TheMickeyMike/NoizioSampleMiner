@@ -1,7 +1,6 @@
 package core
 
 import (
-	"fmt"
 	"io/ioutil"
 	"os"
 	"path"
@@ -21,7 +20,7 @@ func NewFileManager(saveDirectory string) *FileManager {
 
 // SaveToFile creates file with given filename & data
 func (fm *FileManager) SaveToFile(filename string, data []byte) error {
-	dstPath := path.Join(fm.saveDirectory, fmt.Sprintf("%s.caf", filename))
+	dstPath := path.Join(fm.saveDirectory, filename)
 	return ioutil.WriteFile(dstPath, data, 0644)
 }
 

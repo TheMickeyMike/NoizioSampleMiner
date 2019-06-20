@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	core "github.com/TheMickeyMike/NoizioThunderMiner/pkg"
@@ -48,7 +49,7 @@ func (app *App) Run() {
 	log.Infof("Saving sounds to directory: %s\n", app.config.SoundsDirectory)
 
 	for _, sound := range sounds {
-		app.fileManager.SaveToFile(sound.Title(), sound.Data())
+		app.fileManager.SaveToFile(fmt.Sprintf("%s.caf", sound.Title()), sound.Data())
 	}
 
 	log.Infoln("Done. Peace Out 👊🏻")

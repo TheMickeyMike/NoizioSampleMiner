@@ -10,9 +10,11 @@ import (
 
 var (
 	allSoundsQuery  = "SELECT z_pk, ztitle, zdata FROM zsound"
-	updateAllSounds = `UPDATE zsound
-						        SET ztitle='Thunderstorm'
-	                  WHERE ztitle NOT IN ('Campfire', 'October Rain', 'Sea Waves', 'Sunny Day', 'Thunderstorm')`
+	updateAllSounds = `
+		UPDATE zsound
+		SET ztitle='Thunderstorm'
+		WHERE ztitle NOT IN ('Campfire', 'October Rain', 'Sea Waves', 'Sunny Day', 'Thunderstorm')
+	`
 )
 
 // Store provides DB methods
@@ -27,7 +29,7 @@ func NewStore(path string) *Store {
 	log.Infof("Open DB file %s\n", path)
 	store.database, err = sql.Open("sqlite3", path+"?mode=ro")
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatal(err)
 	}
 	return &store
 }
