@@ -1,4 +1,4 @@
-module github.com/TheMickeyMike/NoizioSampleMiner
+module github.com/TheMickeyMike/NoizioThunderMiner
 
 go 1.12
 

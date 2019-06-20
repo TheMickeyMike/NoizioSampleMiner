@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	core "github.com/TheMickeyMike/NoizioSampleMiner/core"
+	core "github.com/TheMickeyMike/NoizioThunderMiner/core"
 	log "github.com/sirupsen/logrus"
 )
 
