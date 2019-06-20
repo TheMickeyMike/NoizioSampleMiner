@@ -1,7 +1,9 @@
-
 # <div align="center"><img src='logo.png' height='200' alt='Logo'></div>
 
 # Noizio Thunder :zap: & Miner :pick:
+
+[![Build Status](https://travis-ci.com/TheMickeyMike/NoizioThunderMiner.svg?branch=master)](https://travis-ci.com/TheMickeyMike/NoizioThunderMiner)
+
 Because we don't like be scrawed :money_with_wings:
 
 ## Thunder
