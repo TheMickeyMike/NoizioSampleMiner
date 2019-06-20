@@ -18,7 +18,7 @@ type App struct {
 // Initialize application state
 func (app *App) Initialize() {
 	log.Infof("%-13s: %s\n", "App name", name)
-	log.Infof("%-13s: %s\n", "App version", version)
+	log.Infof("%-13s: %s (%s)\n", "App version", version, commit)
 	log.Infoln()
 
 	noizioVersion, err := core.GetNoizioVersion(app.config.InfoPlistLocation)

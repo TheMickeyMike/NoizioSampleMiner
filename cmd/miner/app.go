@@ -1,8 +1,10 @@
 package main
 
 var (
-	name    = "NoizioMiner ⚒"
-	version = "0.1.0"
+	name    = "NoizioMiner ⛏"
+	version = "dev"
+	commit  = "none"
+	date    = "unknown"
 )
 
 func main() {

@@ -1,9 +1,10 @@
 package main
 
-
 var (
 	name    = "NoizioThunder ⚡️"
-	version = "0.1.0"
+	version = "dev"
+	commit  = "none"
+	date    = "unknown"
 )
 
 func main() {

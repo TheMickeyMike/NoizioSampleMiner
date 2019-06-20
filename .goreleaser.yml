@@ -1,0 +1,33 @@
+project_name: noizio
+before:
+  hooks:
+    - go mod download
+builds:
+  - main: ./cmd/miner
+    env:
+      - GO111MODULE=on
+      - CGO_ENABLED=1
+    goos:
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X app.version={{.Version}} -X app.commit={{.ShortCommit}} -X app.date={{.Date}}
+    binary: "noizio_miner"
+  - main: ./cmd/thunder
+    env:
+      - GO111MODULE=on
+      - CGO_ENABLED=1
+    goos:
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X app.version={{.Version}} -X app.commit={{.ShortCommit}} -X app.date={{.Date}}
+    binary: "noizio_thunder"
+
+archives:
+  - format: tar.gz
+    wrap_in_directory: true
+    name_template: "noizio_thunder_miner_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
+    files:
+    - README.md
+    - logo.png
