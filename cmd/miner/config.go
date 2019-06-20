@@ -8,10 +8,13 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+const infoPlistLocation = "/Applications/Noizio.app/Contents/Info.plist"
+
 // AppConfig keeps app configuration
 type AppConfig struct {
-	DbPath          string
-	SoundsDirectory string
+	DbPath            string
+	SoundsDirectory   string
+	InfoPlistLocation string
 }
 
 // ParseArgs map passed args to AppConfig
@@ -34,5 +37,8 @@ func (appConfig *AppConfig) ParseArgs() {
 		"./sounds",
 		"Destination directory for sounds files",
 	)
+
 	flag.Parse()
+
+	appConfig.InfoPlistLocation = infoPlistLocation
 }

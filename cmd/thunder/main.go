@@ -19,7 +19,7 @@ func (app *App) Initialize() {
 	log.Infof("%-13s: %s\n", "App version", version)
 	log.Infoln()
 
-	noizioVersion, err := core.GetNoizioVersion()
+	noizioVersion, err := core.GetNoizioVersion(app.config.InfoPlistLocation)
 	if err != nil {
 		log.Fatal("Can't determine Noizio version. Error: ", err)
 	}
