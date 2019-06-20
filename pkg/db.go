@@ -1,4 +1,4 @@
-package pkg
+package core
 
 import (
 	"database/sql"
@@ -6,6 +6,13 @@ import (
 	log "github.com/sirupsen/logrus"
 
 	_ "github.com/mattn/go-sqlite3"
+)
+
+var (
+	allSoundsQuery  = "SELECT z_pk, ztitle, zdata FROM zsound"
+	updateAllSounds = `UPDATE zsound
+						        SET ztitle='Thunderstorm'
+	                  WHERE ztitle NOT IN ('Campfire', 'October Rain', 'Sea Waves', 'Sunny Day', 'Thunderstorm')`
 )
 
 // Store provides DB methods
@@ -30,24 +37,43 @@ func (s *Store) Disconnect() {
 	defer s.database.Close()
 }
 
+// UpdateAllSounds updates sounds title to `Thunderstorm`
+func (s *Store) UpdateAllSounds() error {
+	tx, err := s.database.Begin()
+	if err != nil {
+		return err
+	}
+	result, err := tx.Exec(updateAllSounds)
+	if err != nil {
+		tx.Rollback()
+		return err
+	}
+	err = tx.Commit()
+	if err != nil {
+		return err
+	}
+	rowsAffected, _ := result.RowsAffected()
+	log.Debugf("Result: query executed successfully. %d rows affected", rowsAffected)
+	return nil
+}
+
 // GetAllSounds returns all rescords from 'zsound' table
-func (s *Store) GetAllSounds() Sounds {
+func (s *Store) GetAllSounds() (Sounds, error) {
 	var (
-		sounds         Sounds
-		sound          Sound
-		allSoundsQuery = "select z_pk, ztitle, zdata from zsound"
+		sounds Sounds
+		sound  Sound
 	)
 	rows, err := s.database.Query(allSoundsQuery)
 	if err != nil {
-		log.Fatalln(err)
+		return nil, err
 	}
 
 	for rows.Next() {
 		err = rows.Scan(&sound.zPk, &sound.zTitle, &sound.zData)
 		if err != nil {
-			log.Fatalln(err)
+			return nil, err
 		}
 		sounds = append(sounds, sound)
 	}
-	return sounds
+	return sounds, nil
 }

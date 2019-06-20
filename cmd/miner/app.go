@@ -1,11 +1,9 @@
 package main
 
-import (
-	core "github.com/TheMickeyMike/NoizioSampleMiner/pkg"
-)
+import core "github.com/TheMickeyMike/NoizioSampleMiner/pkg"
 
 var (
-	name    = "NoizioSampleMiner"
+	name    = "NoizioMiner ⚒"
 	version = "0.1.0"
 )
 

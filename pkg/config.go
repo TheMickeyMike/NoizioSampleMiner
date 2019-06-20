@@ -1,17 +1,24 @@
-package pkg
+package core
 
-import "flag"
+import (
+	"flag"
+	"log"
+	"os"
+	"path"
+)
 
+// AppConfig keeps app configuration
 type AppConfig struct {
 	DbPath          string
 	SoundsDirectory string
 }
 
+// ParseArgs map passed args to AppConfig
 func (appConfig *AppConfig) ParseArgs() {
 	flag.StringVar(
 		&appConfig.DbPath,
 		"dbPath",
-		"/Applications/Noizio.app/Contents/Resources/Sounds.sqlite",
+		withUserHomeDirectory("/Library/Containers/com.kryolokovlin.Noizio/Data/Library/Application Support/Noizio/Sounds.sqlite"),
 		"Noizio DB file",
 	)
 
@@ -22,4 +29,12 @@ func (appConfig *AppConfig) ParseArgs() {
 		"Destination directory for sounds files",
 	)
 	flag.Parse()
+}
+
+func withUserHomeDirectory(pathToJoin string) string {
+	homeDir, err := os.UserHomeDir()
+	if err != nil {
+		log.Fatal("Can't establish $HOME directory. Fix your env or try `dbFile` flag. Error: ", err)
+	}
+	return path.Join(homeDir, pathToJoin)
 }
