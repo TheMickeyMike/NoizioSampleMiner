@@ -1,12 +1,14 @@
 package main
 
+import core "github.com/TheMickeyMike/NoizioSampleMiner/pkg"
+
 var (
-	name    = "NoizioSampleMiner"
+	name    = "NoizioMiner ⚒"
 	version = "0.1.0"
 )
 
 func main() {
-	config := &AppConfig{}
+	config := &core.AppConfig{}
 	config.ParseArgs()
 	app := App{config: config}
 	app.Initialize()

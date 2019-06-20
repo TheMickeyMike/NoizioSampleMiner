@@ -1,12 +1,10 @@
-package pkg
+package core
 
 import (
 	"fmt"
 	"io/ioutil"
 	"os"
 	"path"
-
-	log "github.com/sirupsen/logrus"
 )
 
 // FileManager provides methods for files management
@@ -16,9 +14,6 @@ type FileManager struct {
 
 // NewFileManager provides FileManager
 func NewFileManager(saveDirectory string) *FileManager {
-	if err := CreateDirIfNotExist(saveDirectory); err != nil {
-		log.Fatal("Can't create destination directory.", err)
-	}
 	return &FileManager{
 		saveDirectory: saveDirectory,
 	}
@@ -30,8 +25,8 @@ func (fm *FileManager) SaveToFile(filename string, data []byte) error {
 	return ioutil.WriteFile(dstPath, data, 0644)
 }
 
-// CreateDirIfNotExist creates directory if not exist
-func CreateDirIfNotExist(dir string) error {
+// EnsureDirectoryExist creates directory if not exist
+func EnsureDirectoryExist(dir string) error {
 	if _, err := os.Stat(dir); os.IsNotExist(err) {
 		return os.Mkdir(dir, 0755)
 	}

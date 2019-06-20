@@ -1,4 +1,4 @@
-package pkg
+package core
 
 import (
 	"database/sql"
@@ -11,7 +11,7 @@ import (
 var (
 	allSoundsQuery  = "SELECT z_pk, ztitle, zdata FROM zsound"
 	updateAllSounds = `UPDATE zsound
-					          SET ztitle='Thunderstorm'
+						        SET ztitle='Thunderstorm'
 	                  WHERE ztitle NOT IN ('Campfire', 'October Rain', 'Sea Waves', 'Sunny Day', 'Thunderstorm')`
 )
 
@@ -37,6 +37,7 @@ func (s *Store) Disconnect() {
 	defer s.database.Close()
 }
 
+// UpdateAllSounds updates sounds title to `Thunderstorm`
 func (s *Store) UpdateAllSounds() error {
 	tx, err := s.database.Begin()
 	if err != nil {
@@ -57,22 +58,22 @@ func (s *Store) UpdateAllSounds() error {
 }
 
 // GetAllSounds returns all rescords from 'zsound' table
-func (s *Store) GetAllSounds() Sounds {
+func (s *Store) GetAllSounds() (Sounds, error) {
 	var (
 		sounds Sounds
 		sound  Sound
 	)
 	rows, err := s.database.Query(allSoundsQuery)
 	if err != nil {
-		log.Fatalln(err)
+		return nil, err
 	}
 
 	for rows.Next() {
 		err = rows.Scan(&sound.zPk, &sound.zTitle, &sound.zData)
 		if err != nil {
-			log.Fatalln(err)
+			return nil, err
 		}
 		sounds = append(sounds, sound)
 	}
-	return sounds
+	return sounds, nil
 }

@@ -1,31 +1,30 @@
-package pkg
+package core
 
 import (
-	"fmt"
 	"os"
 
 	"howett.net/plist"
-
-	log "github.com/sirupsen/logrus"
 )
 
+const infoPlistLocation = "/Applications/Noizio.app/Contents/Info.plist"
+
+// InfoPlist represents info.plist structure
 type InfoPlist struct {
 	BundleShortVersion string `plist:"CFBundleShortVersionString"`
 }
 
-func Load() {
-	infoPlistFile, err := os.Open("/Applications/Noizio.app/Contents/Info.plist")
+// GetNoizioVersion provides Noizio version
+func GetNoizioVersion() (Version, error) {
+	infoPlistFile, err := os.Open(infoPlistLocation)
 	if err != nil {
-		log.Fatalln(err)
+		return "", err
 	}
 	defer infoPlistFile.Close()
-	log.Infoln("Successfully Opened Info.plist")
 
 	var data InfoPlist
 	decoder := plist.NewDecoder(infoPlistFile)
-	err = decoder.Decode(&data)
-	if err != nil {
-		fmt.Println(err)
+	if err = decoder.Decode(&data); err != nil {
+		return "", err
 	}
-	log.Printf("%+v", data)
+	return Version(data.BundleShortVersion), nil
 }

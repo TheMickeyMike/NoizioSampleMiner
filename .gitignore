@@ -12,3 +12,4 @@
 *.out
 sounds/
 .DS_Store
+.vscode/
