@@ -1,6 +1,5 @@
 package main
 
-import core "github.com/TheMickeyMike/NoizioThunderMiner/pkg"
 
 var (
 	name    = "NoizioThunder ⚡️"
@@ -8,7 +7,7 @@ var (
 )
 
 func main() {
-	config := &core.AppConfig{}
+	config := &AppConfig{}
 	config.ParseArgs()
 	app := App{config: config}
 	app.Initialize()

@@ -9,7 +9,7 @@ import (
 
 // App is app backbone
 type App struct {
-	config *core.AppConfig
+	config *AppConfig
 	store  *core.Store
 }
 

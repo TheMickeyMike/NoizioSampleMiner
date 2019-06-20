@@ -3,13 +3,13 @@ package main
 import (
 	"os"
 
-	core "github.com/TheMickeyMike/NoizioThunderMiner/core"
+	core "github.com/TheMickeyMike/NoizioThunderMiner/pkg"
 	log "github.com/sirupsen/logrus"
 )
 
 // App is app backbone
 type App struct {
-	config      *core.AppConfig
+	config      *AppConfig
 	store       *core.Store
 	fileManager *core.FileManager
 }
