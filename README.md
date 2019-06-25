@@ -8,7 +8,7 @@
 Get all sounds with a little "thundering"
 
 1. Download app [here](https://github.com/TheMickeyMike/NoizioThunderMiner/releases/latest)
-1. Unpack `tar -zxvf dist/noizio_thunder_miner_SNAPSHOT-be0dece_darwin_amd64.tar.gz`
+1. Unpack `tar -zxvf noizio_thunder_miner_0.1.0_darwin_amd64.tar.gz`
 1. Run `./noizio_thunder`
 
 ## Miner
