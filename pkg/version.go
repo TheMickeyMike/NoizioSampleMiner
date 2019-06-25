@@ -16,7 +16,7 @@ const (
 // or ErrUnsupportedVersion if not supported.
 func (v Version) IsSupported() error {
 	switch v {
-	case V20, V201:
+	case V20, V201, V202:
 		return nil
 	}
 	return ErrUnsupportedVersion{v}
