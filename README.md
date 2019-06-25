@@ -4,17 +4,19 @@
 
 [![Build Status](https://travis-ci.com/TheMickeyMike/NoizioThunderMiner.svg?branch=master)](https://travis-ci.com/TheMickeyMike/NoizioThunderMiner)
 
-Because we don't like be scrawed :money_with_wings:
-
 ## Thunder
-Get all sounds unclocked thanks to a little "thundering" :smirk:
+Get all sounds with a little "thundering"
 
-#### How to Thundering
-
-1. Build from source
+1. Download app [here](https://github.com/TheMickeyMike/NoizioThunderMiner/releases/latest)
+1. Unpack `tar -zxvf dist/noizio_thunder_miner_SNAPSHOT-be0dece_darwin_amd64.tar.gz`
+1. Run `./noizio_thunder`
 
 ## Miner
 Export all sounds from Noizio to `.caf` files.
+
+1. Download app [here](https://github.com/TheMickeyMike/NoizioThunderMiner/releases/latest)
+1. Unpack `tar -zxvf dist/noizio_thunder_miner_SNAPSHOT-be0dece_darwin_amd64.tar.gz`
+1. Run `./noizio_miner`
 
 
 ## Support
