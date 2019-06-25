@@ -7,6 +7,8 @@
 ## Thunder
 Get all sounds with a little "thundering"
 
+:warning: If you plan use [Miner](#Miner) do it before thundering.
+
 1. Download app [here](https://github.com/TheMickeyMike/NoizioThunderMiner/releases/latest)
 1. Unpack `tar -zxvf noizio_thunder_miner_0.1.0_darwin_amd64.tar.gz`
 1. Run `./noizio_thunder`
@@ -17,7 +19,6 @@ Export all sounds from Noizio to `.caf` files.
 1. Download app [here](https://github.com/TheMickeyMike/NoizioThunderMiner/releases/latest)
 1. Unpack `tar -zxvf noizio_thunder_miner_0.1.0_darwin_amd64.tar.gz`
 1. Run `./noizio_miner`
-
 
 ## Support
 | Noizio Version | Supporting |
