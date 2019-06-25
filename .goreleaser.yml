@@ -11,7 +11,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X app.version={{.Version}} -X app.commit={{.ShortCommit}} -X app.date={{.Date}}
+    ldflags: -s -w -X main.version={{.Version}} -X main.commit={{.ShortCommit}} -X main.date={{.Date}}
     binary: "noizio_miner"
   - main: ./cmd/thunder
     env:
@@ -21,7 +21,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X app.version={{.Version}} -X app.commit={{.ShortCommit}} -X app.date={{.Date}}
+    ldflags: -s -w -X main.version={{.Version}} -X main.commit={{.ShortCommit}} -X main.date={{.Date}}
     binary: "noizio_thunder"
 
 archives:
