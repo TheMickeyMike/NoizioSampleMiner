@@ -10,13 +10,15 @@ const (
 	V201 Version = "2.0.1"
 	// V201 is string for version 2.0.2
 	V202 Version = "2.0.2"
+	// V201 is string for version 2.0.2
+	V203 Version = "2.0.3"
 )
 
 // IsSupported returns nil if the version is supported,
 // or ErrUnsupportedVersion if not supported.
 func (v Version) IsSupported() error {
 	switch v {
-	case V20, V201, V202:
+	case V20, V201, V202, V203:
 		return nil
 	}
 	return ErrUnsupportedVersion{v}
